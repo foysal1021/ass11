@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "../../Home/Banner";
+import Meet from "../../Home/Meet";
 import Nav from "../../Home/Nav";
 import Services from "../../Home/Services";
 
@@ -9,6 +10,7 @@ const Header = () => {
       <Nav></Nav>
       <Banner></Banner>
       <Services></Services>
+      <Meet></Meet>
     </div>
   );
 };

@@ -11,8 +11,9 @@ const Services = () => {
       }}
     >
       <h1 className=" text-5xl font-bold"> MY SERVICES </h1>
-      <div className=" flex justify-between">
-        <div className="card w-96  shadow-xl">
+
+      <div className=" lg:flex justify-around">
+        <div className="card w-96  shadow-xl mx-auto ">
           <figure className="px-10 pt-10">
             <img
               src="https://placeimg.com/400/225/arch"
@@ -28,8 +29,7 @@ const Services = () => {
             </div>
           </div>
         </div>
-
-        <div className="card w-96  shadow-xl">
+        <div className="card w-96  shadow-xl mx-auto ">
           <figure className="px-10 pt-10">
             <img
               src="https://placeimg.com/400/225/arch"
@@ -45,8 +45,7 @@ const Services = () => {
             </div>
           </div>
         </div>
-
-        <div className="card w-96  shadow-xl">
+        <div className="card w-96  shadow-xl mx-auto ">
           <figure className="px-10 pt-10">
             <img
               src="https://placeimg.com/400/225/arch"
@@ -63,6 +62,7 @@ const Services = () => {
           </div>
         </div>
       </div>
+      <button className=" btn btn-primary"> see all </button>
     </div>
   );
 };

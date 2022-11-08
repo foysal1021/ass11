@@ -1,0 +1,15 @@
+#meetIMG:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+
+  background: linear-gradient(
+    to left,
+    rgba(11, 163, 223, 0.421),
+    rgba(8, 137, 197, 0.686)
+  );
+}
