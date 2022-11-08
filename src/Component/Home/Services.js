@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Service from "./Service";
 
 const Services = () => {
+  const [Services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/services3")
+      .then((res) => res.json())
+      .then((data) => setServices(data.services));
+  }, []);
+
+  // console.log(Services);
+
   return (
     <div
       className=" h-full  container mx-auto my-10 py-10 rounded-xl"
@@ -13,56 +23,14 @@ const Services = () => {
       <h1 className=" text-5xl font-bold"> MY SERVICES </h1>
 
       <div className=" lg:flex justify-around">
-        <div className="card w-96  shadow-xl mx-auto ">
-          <figure className="px-10 pt-10">
-            <img
-              src="https://placeimg.com/400/225/arch"
-              alt="Shoes"
-              className="rounded-xl"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="card w-96  shadow-xl mx-auto ">
-          <figure className="px-10 pt-10">
-            <img
-              src="https://placeimg.com/400/225/arch"
-              alt="Shoes"
-              className="rounded-xl"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="card w-96  shadow-xl mx-auto ">
-          <figure className="px-10 pt-10">
-            <img
-              src="https://placeimg.com/400/225/arch"
-              alt="Shoes"
-              className="rounded-xl"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
+        {Services.map((service) => (
+          <Service key={service._id} service={service}></Service>
+        ))}
       </div>
-      <button className=" btn btn-primary"> see all </button>
+      <button className="  bg-teal-700 btn mt-20 px-10 text-xl capitalize">
+        {" "}
+        See All{" "}
+      </button>
     </div>
   );
 };
