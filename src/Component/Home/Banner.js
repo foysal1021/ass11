@@ -25,6 +25,7 @@ const Banner = () => {
             <p> Trained in Dermatosurgery</p>
             <p> Cosmetic Dermatologist, Bhola Sadar Hospital, Bhola.</p>
           </span>
+          <button className=" btn btn-primary"> Serivces </button>
         </div>
         <div>
           <img src={img} alt="" />
