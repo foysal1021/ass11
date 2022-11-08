@@ -1,21 +1,33 @@
 import React from "react";
+import img from "../../Asset/img/Screenshot_16-removebg-preview.png";
 
 const Banner = () => {
   return (
     <div
-      className="hero min-h-screen"
-      style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}
+      className=" h-full  container mx-auto"
+      style={{
+        backgroundImage: `url("https://i.ibb.co/zRk2cVn/16351572-rm209-adj-20.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
-      <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+      <div className=" lg:flex justify-around items-center">
+        <div className=" pt-10  lg:text-start">
+          <h1 className=" text-5xl lg:text-6xl font-bold ">
+            {" "}
+            Dr. Joyanto Saha{" "}
+          </h1>
+          <p className=" text-3xl lg:text-3xl my-3 mb-9">
+            Specialist in Dermatology and Venereology
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <span className=" lg:text-xl text-xl">
+            <p> MBBS, BCS(Health), DDV(BSMMU)</p>
+            <p> Trained in Dermatosurgery</p>
+            <p> Cosmetic Dermatologist, Bhola Sadar Hospital, Bhola.</p>
+          </span>
+        </div>
+        <div>
+          <img src={img} alt="" />
         </div>
       </div>
     </div>
