@@ -1,10 +1,11 @@
-
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import { routs } from "./Component/Router/Routs/Routs";
 
 function App() {
   return (
     <div className="App">
-      <h1 className=" text-red-600"> ok </h1>
+      <RouterProvider router={routs}></RouterProvider>
     </div>
   );
 }
