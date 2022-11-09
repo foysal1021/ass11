@@ -61,7 +61,7 @@ const Nav = () => {
                     <a href="/">Submenu 1</a>
                   </li>
                   <li>
-                    <a href="/">Submenu 2</a>
+                    <a href="/">Submenu 2d</a>
                   </li>
                 </ul>
               </li>
@@ -76,14 +76,19 @@ const Nav = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            <li>
-              <a href="/">Item 1</a>
-            </li>
-            <li>
-              <a href="/">Item 3</a>
-            </li>
-          </ul>
+          {user?.uid ? (
+            <ul className="menu menu-horizontal p-0">
+              <li>
+                <Link> My reviews</Link>
+              </li>
+
+              <li>
+                <Link to="/AddServices">Add service</Link>
+              </li>
+            </ul>
+          ) : (
+            <></>
+          )}
         </div>
 
         <div className="navbar-end">
