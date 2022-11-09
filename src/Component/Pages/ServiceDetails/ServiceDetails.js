@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
-
   const { img, price, title, details, _id } = useLoaderData();
+  const [reviews, setReviews] = useState([]);
+  console.log(reviews);
 
   const addReview = (event) => {
     event.preventDefault();
@@ -23,7 +24,7 @@ const ServiceDetails = () => {
       aboutService: review,
       service_id: _id,
     };
-
+    // review post in database start
     fetch("http://localhost:5000/review", {
       method: "POST",
       headers: {
@@ -33,7 +34,13 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
-  };
+  }; // review post in database end
+
+  useEffect(() => {
+    fetch("http://localhost:5000/review")
+      .then((res) => res.json())
+      .then((data) => setReviews(data.review));
+  }, []);
 
   return (
     <div>
@@ -100,34 +107,6 @@ const ServiceDetails = () => {
 
               <input type="submit" value="Send Request" className=" btn" />
             </form>
-            {/* <form
-              onSubmit={addReview}
-              className=" grid grid-cols-1 lg:grid-cols-2 gap-6 pt-10 px-5"
-            >
-              <input
-                name="name"
-                type="text"
-                placeholder="Type Name"
-                className="input input-bordered  w-full"
-              />
-              <input
-                name="email"
-                type="email"
-                placeholder="Type email"
-                className="input input-bordered  w-full"
-              />
-              <input
-                name="img"
-                type="text"
-                placeholder="give img link "
-                className="input input-bordered  w-full"
-              />
-              <textarea
-                className="textarea textarea-info h-[140px] lg:h-0"
-                placeholder="Type Review"
-              ></textarea>
-              <input type="sumbit" value="submit" className="btn mt-5" />
-            </form> */}
           </div>
         ) : (
           <span className=" text-2xl font-bold">
@@ -147,29 +126,25 @@ const ServiceDetails = () => {
       <div className="overflow-x-auto w-full container mx-auto my-40 ">
         <h1 className=" text-2xl font-bold mb-10"> SERVICES REVIEW</h1>
         {/* table */}
-        <div className="   lg:flex justify-around  items-center border-4 rounded-xl p-6">
-          <div className=" flex items-center lg:w-1/3 ">
-            <img
-              className=" w-20 h-20 rounded-full"
-              alt=""
-              src="https://static.toiimg.com/thumb/msid-11326153,width-1070,height-580,overlay-toi_sw,pt-32,y_pad-40,resizemode-75,imgsize-28834/11326153.jpg"
-            />
-            <span className="  text-start ml-3">
-              <p className=" text-2xl font-bold"> name</p>
-              <p className=" text-xl "> email</p>
-            </span>
-          </div>
+        {reviews.map((review) => (
+          <div className="   lg:flex justify-around  items-center border-4 rounded-xl p-6">
+            <div className=" flex items-center lg:w-1/3 ">
+              <img
+                className=" w-20 h-20 rounded-full"
+                alt=""
+                src={review.photo}
+              />
+              <span className="  text-start ml-3">
+                <p className=" text-2xl font-bold"> {review.name}</p>
+                <p className=" text-xl "> {review.email}</p>
+              </span>
+            </div>
 
-          <div className=" lg:w-2/3">
-            <p className=" mt-5 text-justify">
-              Karenjit Kaur Vohra, known by her stage name Sunny Leone, is a
-              Canadian-American model and actress in the American and Indian
-              film industries. She is a former pornographic actress. She was
-              born in Canada to an Indian Sikh family. She has Canadian and
-              American citizenship. Her pet name is Karen.
-            </p>
+            <div className=" lg:w-2/3">
+              <p className=" mt-5 text-justify">{review.aboutService}</p>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
       {/* review section end */}
     </div>

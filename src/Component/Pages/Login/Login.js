@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { user, userLogin } = useContext(AuthContext);
+  const { user, userLogin, googleSinin } = useContext(AuthContext);
   console.log("login ", user);
   const login = (event) => {
     event.preventDefault();
@@ -20,6 +21,11 @@ const Login = () => {
       })
       .catch((err) => {});
     // user login end
+  };
+  const googleLogin = () => {
+    googleSinin()
+      .then(() => {})
+      .catch((err) => {});
   };
   return (
     <div className="hero-content mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 lg:py-40 ">
@@ -67,6 +73,11 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
+        <button className="btn btn-outline" onClick={googleLogin}>
+          {" "}
+          <FaGoogle className=" text-red-500 text-2xl mx-3"></FaGoogle> Login
+          With Google
+        </button>
       </form>
     </div>
   );
