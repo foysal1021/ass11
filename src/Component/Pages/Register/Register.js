@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
+import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 
 const Login = () => {
+  const { userRegister } = useContext(AuthContext);
   const register = (event) => {
     event.preventDefault();
-    // console.log(event);
+
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+
+    // user singup start
+    userRegister(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .then((err) => {});
+    // user singup end
   };
 
   return (
@@ -55,6 +66,14 @@ const Login = () => {
             className="input input-bordered"
           />
         </div>
+        <span className=" text-start">
+          {" "}
+          Already have an accout?{" "}
+          <Link className=" text-teal-600 font-bold" to="/login">
+            {" "}
+            Login{" "}
+          </Link>
+        </span>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>
