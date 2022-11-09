@@ -1,23 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
 
 const Login = () => {
-  const login = (event) => {
+  const register = (event) => {
     event.preventDefault();
-    const from = event.target;
-    const email = from.email.value;
-    const password = from.password.value;
-    console.log(email, password);
+    // console.log(event);
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
   };
+
   return (
     <div className="hero-content mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 lg:py-40 ">
       <div className="text-center ">
         <img alt="" src={loginImg} />
       </div>
 
-      <form onSubmit={login} className="card-body">
-        <h1 className=" text-5xl font-bold"> Login Now!!!</h1>
+      <form onSubmit={register} className="card-body">
+        <h1 className=" text-5xl font-bold"> Register Now!!!</h1>
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            name="name"
+            type="text"
+            placeholder="Type Name"
+            className="input input-bordered"
+          />
+        </div>
+
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -25,7 +40,7 @@ const Login = () => {
           <input
             name="email"
             type="text"
-            placeholder="Enter Email"
+            placeholder="Type Email"
             className="input input-bordered"
           />
         </div>
@@ -35,26 +50,13 @@ const Login = () => {
           </label>
           <input
             name="password"
-            type="text"
-            placeholder="Enter Password"
+            type="password"
+            placeholder=" Type Password"
             className="input input-bordered"
           />
-          <label className="label">
-            <Link href="#" className="label-text-alt link link-hover">
-              Forgot password?
-            </Link>
-          </label>
         </div>
-        <span className=" text-start">
-          {" "}
-          Are you new here?{" "}
-          <Link className=" text-teal-500 font-bold" to="/Register">
-            {" "}
-            Register{" "}
-          </Link>
-        </span>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Register</button>
         </div>
       </form>
     </div>

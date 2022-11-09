@@ -97,6 +97,9 @@ const Nav = () => {
           <Link to="/login" className=" btn">
             Login
           </Link>
+          <Link to="/Register" className=" btn">
+            Register
+          </Link>
         </div>
       </div>
     </div>
