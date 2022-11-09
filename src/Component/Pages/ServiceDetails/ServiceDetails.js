@@ -4,10 +4,10 @@ import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   const { img, price, title, details, _id } = useLoaderData();
-  console.log(_id);
-  const order = (event) => {
+
+  const addReview = (event) => {
     event.preventDefault();
 
     const form = event.target;
@@ -24,7 +24,15 @@ const ServiceDetails = () => {
       service_id: _id,
     };
 
-    console.log(CustomerREVIEW);
+    fetch("http://localhost:5000/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(CustomerREVIEW),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   return (
@@ -57,7 +65,7 @@ const ServiceDetails = () => {
         {user?.uid ? (
           <div className=" container mx-auto">
             <form
-              onSubmit={order}
+              onSubmit={addReview}
               className=" grid grid-cols-1 lg:grid-cols-2 gap-10 py-10 px-5"
             >
               <input
