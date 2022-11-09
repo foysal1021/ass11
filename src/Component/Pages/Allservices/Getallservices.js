@@ -15,7 +15,7 @@ const Getallservices = ({ service }) => {
           <p className=" text-xl font-bold">Price : ${price} </p>
           <p>Price : {details.slice(0, 100)}... </p>
           <div className="card-actions">
-            <Link to="">
+            <Link to={`/service-details/${_id}`}>
               <button className="btn btn-primary mt-6"> View details </button>
             </Link>
           </div>
