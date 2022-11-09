@@ -41,32 +41,14 @@ const Nav = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a href="/">Item 1</a>
+                <Link to="/blog"> Blog </Link>
               </li>
-              <li tabIndex={0}>
-                <a href="/" className="justify-between">
-                  Parent
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <a href="/">Submenu 1</a>
-                  </li>
-                  <li>
-                    <a href="/">Submenu 2d</a>
-                  </li>
-                </ul>
+
+              <li>
+                <Link> My reviews</Link>
               </li>
               <li>
-                <a href="/">Item 3</a>
+                <Link to="/AddServices">Add service</Link>
               </li>
             </ul>
           </div>
@@ -76,6 +58,7 @@ const Nav = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
+          <Link to="/blog"> Blog </Link>
           {user?.uid ? (
             <ul className="menu menu-horizontal p-0">
               <li>
