@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 
 const Login = () => {
   const { user, userLogin } = useContext(AuthContext);
-
+  console.log("login ", user);
   const login = (event) => {
     event.preventDefault();
     const from = event.target;
@@ -18,7 +18,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
       })
-      .then((err) => {});
+      .catch((err) => {});
     // user login end
   };
   return (

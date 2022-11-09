@@ -1,7 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext/AuthProvider";
 
 const Nav = () => {
+  const { userlogout } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const logout = () => {
+    userlogout()
+      .then((result) => {
+        navigate("/login");
+        console.log("user not found");
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <div className=" bg-teal-500 ">
       <div className="navbar container mx-auto ">
@@ -100,6 +111,10 @@ const Nav = () => {
           <Link to="/Register" className=" btn">
             Register
           </Link>
+          <button onClick={logout} className=" btn">
+            {" "}
+            Logout{" "}
+          </button>
         </div>
       </div>
     </div>
