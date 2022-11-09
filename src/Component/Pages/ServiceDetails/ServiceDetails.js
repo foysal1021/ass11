@@ -1,8 +1,31 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 
 const ServiceDetails = () => {
-  const { img, price, title, details } = useLoaderData();
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const { img, price, title, details, _id } = useLoaderData();
+  console.log(_id);
+  const order = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const review = form.review.value;
+
+    const CustomerREVIEW = {
+      name: name,
+      email: email,
+      photo: photo,
+      aboutService: review,
+      service_id: _id,
+    };
+
+    console.log(CustomerREVIEW);
+  };
 
   return (
     <div>
@@ -26,35 +49,90 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
+
       {/*  give feedback start*/}
-      <div className=" container mx-auto">
-        <h1 className=" text-3xl font-bold"> ADD REVIEW</h1>
-        <form className=" grid grid-cols-1 lg:grid-cols-2 gap-6 pt-10 px-5">
-          <input
-            name="name"
-            type="text"
-            placeholder="Type Name"
-            className="input input-bordered  w-full"
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Type email"
-            className="input input-bordered  w-full"
-          />
-          <input
-            name="img"
-            type="text"
-            placeholder="give img link "
-            className="input input-bordered  w-full"
-          />
-          <textarea
-            className="textarea textarea-info h-[140px] lg:h-0"
-            placeholder="Type Review"
-          ></textarea>
-        </form>
-        <input type="sumbit" value="submit" className="btn mt-5" />
+
+      <div>
+        <h1 className=" text-3xl font-bold mb-5"> ADD REVIEW</h1>
+        {user?.uid ? (
+          <div className=" container mx-auto">
+            <form
+              onSubmit={order}
+              className=" grid grid-cols-1 lg:grid-cols-2 gap-10 py-10 px-5"
+            >
+              <input
+                readOnly
+                defaultValue={user?.displayName}
+                name="name"
+                type="text"
+                placeholder="Type Your Name"
+                className="input input-bordered input-secondary w-full"
+              />
+              <input
+                readOnly
+                defaultValue={user?.email}
+                name="email"
+                type="email"
+                placeholder="Type Your Email"
+                className="input input-bordered input-secondary w-full"
+              />
+              <input
+                readOnly
+                defaultValue={user?.photoURL}
+                name="photo"
+                type="text"
+                placeholder="Type Your Photo URL "
+                className="input input-bordered input-secondary w-full"
+              />
+              <textarea
+                name="review"
+                className="textarea textarea-accent h-[250px] lg:h-0"
+                placeholder="Bio"
+              ></textarea>
+
+              <input type="submit" value="Send Request" className=" btn" />
+            </form>
+            {/* <form
+              onSubmit={addReview}
+              className=" grid grid-cols-1 lg:grid-cols-2 gap-6 pt-10 px-5"
+            >
+              <input
+                name="name"
+                type="text"
+                placeholder="Type Name"
+                className="input input-bordered  w-full"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Type email"
+                className="input input-bordered  w-full"
+              />
+              <input
+                name="img"
+                type="text"
+                placeholder="give img link "
+                className="input input-bordered  w-full"
+              />
+              <textarea
+                className="textarea textarea-info h-[140px] lg:h-0"
+                placeholder="Type Review"
+              ></textarea>
+              <input type="sumbit" value="submit" className="btn mt-5" />
+            </form> */}
+          </div>
+        ) : (
+          <span className=" text-2xl font-bold">
+            {" "}
+            For added Reivew{" "}
+            <Link to="/login" className="btn btn-primary px-10 ">
+              {" "}
+              Login{" "}
+            </Link>
+          </span>
+        )}
       </div>
+
       {/*  give feedback end */}
 
       {/* review section start */}

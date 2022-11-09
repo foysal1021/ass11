@@ -4,20 +4,26 @@ import loginImg from "../../../Asset/img/login.png";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 
 const Login = () => {
-  const { userRegister } = useContext(AuthContext);
+  const { userRegister, updateUser } = useContext(AuthContext);
+
   const register = (event) => {
     event.preventDefault();
 
     const form = event.target;
     const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+    // console.log(name, photo, email, password);
 
     // user singup start
     userRegister(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        updateUser(name, photo)
+          .then((result) => {
+            alert("ok");
+          })
+          .catch((err) => console.error(err));
       })
       .catch((err) => {});
     // user singup end
@@ -37,6 +43,7 @@ const Login = () => {
             <span className="label-text">Name</span>
           </label>
           <input
+            required
             name="name"
             type="text"
             placeholder="Type Name"
@@ -49,17 +56,33 @@ const Login = () => {
             <span className="label-text">Email</span>
           </label>
           <input
+            required
             name="email"
             type="text"
             placeholder="Type Email"
             className="input input-bordered"
           />
         </div>
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input
+            required
+            name="photo"
+            type="text"
+            placeholder=" Type Photo URL"
+            className="input input-bordered"
+          />
+        </div>
+
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
           <input
+            required
             name="password"
             type="password"
             placeholder=" Type Password"
