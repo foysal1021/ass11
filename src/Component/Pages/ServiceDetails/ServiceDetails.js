@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
+import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -33,7 +34,11 @@ const ServiceDetails = () => {
       body: JSON.stringify(CustomerREVIEW),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire("Review Added!", "Pls Refresh page", "success");
+        }
+      });
   }; // review post in database end
 
   useEffect(() => {
@@ -105,7 +110,7 @@ const ServiceDetails = () => {
                 placeholder="Bio"
               ></textarea>
 
-              <input type="submit" value="Send Request" className=" btn" />
+              <input type="submit" value="Give Review" className=" btn" />
             </form>
           </div>
         ) : (
@@ -141,7 +146,13 @@ const ServiceDetails = () => {
             </div>
 
             <div className=" lg:w-2/3">
-              <p className=" mt-5 text-justify">{review.aboutService}</p>
+              <p className=" mt-5 text-justify">
+                {review.status ? (
+                  <span>{review.status}</span>
+                ) : (
+                  <span>{review.aboutService}</span>
+                )}
+              </p>
             </div>
           </div>
         ))}

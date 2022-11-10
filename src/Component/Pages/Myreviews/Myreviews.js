@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
-// ES6 Modules or TypeScript
 import Swal from "sweetalert2";
+
+// ES6 Modules or TypeScript
 
 const Myreviews = () => {
   const { user } = useContext(AuthContext);
-  console.log("ok", user?.email);
+  //   console.log("ok", user?.email);
   const [myReviews, setMyreviews] = useState([]);
-  console.log(myReviews);
+  console.log("all reviews", myReviews);
 
   useEffect(() => {
     fetch(`http://localhost:5000/review?email=${user?.email}`)
@@ -26,12 +27,35 @@ const Myreviews = () => {
       .then((data) => {
         if (data.deletedCount > 0) {
           Swal.fire("Good job!", "Review Delete!", "success");
+
           const remaning = myReviews.filter((review) => review._id !== dlt);
           setMyreviews(remaning);
         }
       });
   };
-  // delete review start
+  // delete review end
+
+  const [UPDATEreview, SETreview] = useState();
+
+  const getUpdatedReview = (e) => {
+    SETreview(e.target.value);
+  };
+  // updated review start
+  const updatedReview = (id) => {
+    fetch(`http://localhost:5000/review/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: UPDATEreview }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire("Review Updated", "Pls Refresh page", "success");
+        }
+      });
+  }; // updated review end
 
   return (
     <div>
@@ -64,13 +88,38 @@ const Myreviews = () => {
               />
               <span className="  text-start ml-3">
                 <p className=" text-2xl font-bold"> {review.name} </p>
-                <p className=" text-xl "> {review.email} </p>
+                <p className="  "> {review.email} </p>
               </span>
             </div>
 
-            <div className=" lg:w-2/3">
-              <p className=" mt-5 text-justify">{review.aboutService}</p>
-              <button> Eidit</button>
+            <div className=" lg:w-2/3 lg:flex justify-between">
+              <p className="  mt-5 text-justify">
+                {review.status ? (
+                  <p> {review.status} </p>
+                ) : (
+                  <p>{review.aboutService}</p>
+                )}
+                {/* {review.aboutService} */}
+              </p>
+
+              <p className=" mt-5 lg:flex items-center">
+                <form className=" flex items-center">
+                  <textarea
+                    onBlur={getUpdatedReview}
+                    name="updated"
+                    className="textarea  textarea-accent lg:h-0"
+                    placeholder="Updated Review"
+                  ></textarea>
+                  <p
+                    className="px-6 py-3 rounded-lg ml-4 bg-teal-600 "
+                    onClick={() => updatedReview(review._id)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {" "}
+                    Edit{" "}
+                  </p>
+                </form>
+              </p>
             </div>
           </div>
         ))}

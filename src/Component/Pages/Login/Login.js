@@ -5,8 +5,8 @@ import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { user, userLogin, googleSinin } = useContext(AuthContext);
-  console.log("login ", user);
+  const { userLogin, googleSinin } = useContext(AuthContext);
+
   const login = (event) => {
     event.preventDefault();
     const from = event.target;
