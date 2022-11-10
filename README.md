@@ -4,7 +4,7 @@
 
 ### live links [https://medicalservices-cf64e.web.app](https://medicalservices-cf64e.web.app)
 
-### Github client link [http://localhost:3000](http://localhost:3000)
+### Github client link [https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-foysal1021](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-foysal1021)
 
 ### Github server link [http://localhost:3000](http://localhost:3000)
 
