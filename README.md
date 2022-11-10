@@ -10,15 +10,15 @@
 
 ## i will user for project
 
-### - react
+- react
 
-### - react router
+- react router
 
-### - firebase
+- firebase
 
-### - mongodb
+- mongodb
 
-### - tailwindcss
+- tailwindcss
 
 In the project directory, you can run:
 
