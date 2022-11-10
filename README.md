@@ -2,7 +2,7 @@
 
 ### here my project info
 
-### live links [http://localhost:3000](http://localhost:3000)
+### live links [https://medicalservices-cf64e.web.app](https://medicalservices-cf64e.web.app)
 
 ### Github client link [http://localhost:3000](http://localhost:3000)
 
