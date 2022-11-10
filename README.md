@@ -1,10 +1,24 @@
-### HI, I'm sorry form that, i dont complited this project form my exam. but i will try. I think if i get some time more then i will try finish this project any way ...
+## HI, I'm sorry form that, i dont complited this project form my exam. but i will try. I think if i get some time more then i will try finish this project any way ...
 
-### here my Github link
+### here my project info
 
 ### live links [http://localhost:3000](http://localhost:3000)
 
-## Available Scripts
+### Github client link [http://localhost:3000](http://localhost:3000)
+
+### Github server link [http://localhost:3000](http://localhost:3000)
+
+## i will user for project
+
+### - react
+
+### - react router
+
+### - firebase
+
+### - mongodb
+
+### - tailwindcss
 
 In the project directory, you can run:
 
