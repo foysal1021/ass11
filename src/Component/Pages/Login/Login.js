@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   const { userLogin, googleSinin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const login = (event) => {
     event.preventDefault();
@@ -15,16 +19,16 @@ const Login = () => {
     // user login start
     userLogin(email, password)
       .then((result) => {
-        alert("login");
-        const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) => {});
     // user login end
   };
   const googleLogin = () => {
     googleSinin()
-      .then(() => {})
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch((err) => {});
   };
   return (

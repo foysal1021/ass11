@@ -52,9 +52,9 @@ const Nav = () => {
               </li>
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost normal-case text-xl">
-            daisyUI
-          </a>
+          <Link className="btn btn-ghost normal-case text-2xl font-bold" to="/">
+            Medi<span className=" text-red-500">Space</span>{" "}
+          </Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">

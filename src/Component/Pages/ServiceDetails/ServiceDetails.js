@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const { img, price, title, details, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
+  //xxxxxxxxxxxxxxxxxxxx
+  const location = useLocation();
+  // <progress className="progress w-56"></progress>
 
   const addReview = (event) => {
     event.preventDefault();
@@ -71,7 +73,7 @@ const ServiceDetails = () => {
       </div>
 
       {/*  give feedback start*/}
-
+      {/* ................................................................. */}
       <div>
         <h1 className=" text-3xl font-bold mb-5"> ADD REVIEW</h1>
         {user?.uid ? (
@@ -117,7 +119,12 @@ const ServiceDetails = () => {
           <span className=" text-2xl font-bold">
             {" "}
             For added Reivew{" "}
-            <Link to="/login" className="btn btn-primary px-10 ">
+            <Link
+              state={{ from: location }}
+              replace
+              to="/login"
+              className="btn btn-primary px-10 "
+            >
               {" "}
               Login{" "}
             </Link>
