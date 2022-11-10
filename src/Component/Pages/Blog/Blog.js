@@ -1,6 +1,8 @@
 import React from "react";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 const Blog = () => {
+  UseTitale("Blog");
   return (
     <div
       className=" h-full  container mx-auto my-10 py-10 rounded-xl px-10"

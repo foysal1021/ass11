@@ -1,8 +1,10 @@
 import React from "react";
 import img from "../../Asset/img/meet.png";
+import UseTitale from "../../Utilitis/Utilitis";
 import "./Meet.css";
 
 const Meet = () => {
+  UseTitale("Meet ");
   return (
     <div className=" container mx-auto my-40">
       <h1 className=" text-5xl font-bold mb-10"> TO MEET </h1>

@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 const Login = () => {
+  UseTitale("login");
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 

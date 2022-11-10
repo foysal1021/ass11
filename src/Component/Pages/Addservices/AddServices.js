@@ -1,6 +1,8 @@
 import React from "react";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 const AddServices = () => {
+  UseTitale("Add Services");
   const addservice = (event) => {
     event.preventDefault();
     const form = event.target;

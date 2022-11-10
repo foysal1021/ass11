@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UseTitale from "../../Utilitis/Utilitis";
 import Service from "./Service";
 
 const Services = () => {
+  UseTitale("services");
   const [Services, setServices] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/services3")

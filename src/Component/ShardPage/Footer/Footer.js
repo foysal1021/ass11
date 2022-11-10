@@ -1,6 +1,8 @@
 import React from "react";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 const Footer = () => {
+  UseTitale("Footer");
   return (
     <div>
       <footer className="footer p-10 bg-base-200 text-base-content">

@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 const Login = () => {
+  UseTitale("Login");
   const { userRegister, updateUser } = useContext(AuthContext);
 
   const register = (event) => {

@@ -1,7 +1,9 @@
 import React from "react";
 import img from "../../Asset/img/Screenshot_16-removebg-preview.png";
+import UseTitale from "../../Utilitis/Utilitis";
 
 const Banner = () => {
+  UseTitale("banner");
   return (
     <div
       className=" h-full  container mx-auto"

@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 const ServiceDetails = () => {
+  UseTitale(" Service Details");
   const { user, loading } = useContext(AuthContext);
   const { img, price, title, details, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);

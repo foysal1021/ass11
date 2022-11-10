@@ -1,7 +1,9 @@
 import React from "react";
 import aboutIMG from "../../Asset/img/aboutmE.png";
+import UseTitale from "../../Utilitis/Utilitis";
 
 const AboutME = () => {
+  UseTitale("about me");
   return (
     <div
       style={{

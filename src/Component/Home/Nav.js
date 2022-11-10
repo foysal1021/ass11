@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext/AuthProvider";
+import UseTitale from "../../Utilitis/Utilitis";
 
 const Nav = () => {
+  UseTitale("nav");
   const { user, userlogout } = useContext(AuthContext);
 
   const navigate = useNavigate();

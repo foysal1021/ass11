@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import UseTitale from "../../Utilitis/Utilitis";
 
 const Service = ({ service }) => {
+  UseTitale("services");
   // console.log(service);
   const { img, title, price, details } = service;
   return (

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
+import UseTitale from "../../../Utilitis/Utilitis";
 
 // ES6 Modules or TypeScript
 
 const Myreviews = () => {
+  UseTitale("My Reviews");
   const { user } = useContext(AuthContext);
   //   console.log("ok", user?.email);
   const [myReviews, setMyreviews] = useState([]);

@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import UseTitale from "../../../Utilitis/Utilitis";
 const Getallservices = ({ service }) => {
+  UseTitale("All Services");
   const { _id, title, price, img, details } = service;
 
   return (

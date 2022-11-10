@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import UseTitale from "../../../Utilitis/Utilitis";
 import Getallservices from "./Getallservices";
 
 const Allservices = () => {
+  UseTitale("All Services");
   const [allservices, setallservices] = useState([]);
 
   useEffect(() => {
