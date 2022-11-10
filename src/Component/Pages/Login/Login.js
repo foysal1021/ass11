@@ -21,6 +21,7 @@ const Login = () => {
     // user login start
     userLogin(email, password)
       .then((result) => {
+        from.reset();
         navigate(from, { replace: true });
       })
       .catch((err) => {});

@@ -45,13 +45,22 @@ const Nav = () => {
               <li>
                 <Link to="/blog"> Blog </Link>
               </li>
+              <li>
+                <Link to="/"> Home </Link>
+              </li>
 
-              <li>
-                <Link to=""> My reviews</Link>
-              </li>
-              <li>
-                <Link to="/AddServices">Add service</Link>
-              </li>
+              {user?.uid ? (
+                <ul>
+                  <li>
+                    <Link to=""> My reviews</Link>
+                  </li>
+                  <li>
+                    <Link to="/AddServices">Add service</Link>
+                  </li>
+                </ul>
+              ) : (
+                <></>
+              )}
             </ul>
           </div>
           <Link className="btn btn-ghost normal-case text-2xl font-bold" to="/">
@@ -60,7 +69,16 @@ const Nav = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <Link to="/blog"> Blog </Link>
+          <ul className="menu menu-horizontal p-0">
+            {" "}
+            <li>
+              <Link to="/"> Home </Link>
+            </li>
+            <li>
+              <Link to="/blog"> Blog </Link>
+            </li>
+          </ul>
+
           {user?.uid ? (
             <ul className="menu menu-horizontal p-0">
               <li>

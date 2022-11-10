@@ -30,7 +30,7 @@ const ServiceDetails = () => {
       service_id: _id,
     };
     // review post in database start
-    fetch("http://localhost:5000/review", {
+    fetch("https://server-two-xi.vercel.app/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const ServiceDetails = () => {
   }; // review post in database end
 
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://server-two-xi.vercel.app/review")
       .then((res) => res.json())
       .then((data) => setReviews(data.review));
   }, []);

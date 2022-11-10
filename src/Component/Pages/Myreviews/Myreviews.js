@@ -13,7 +13,7 @@ const Myreviews = () => {
   console.log("all reviews", myReviews);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`)
+    fetch(`https://server-two-xi.vercel.app/review?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyreviews(data.review));
   }, [user?.email]);
@@ -22,7 +22,7 @@ const Myreviews = () => {
   const deleteReview = (dlt) => {
     console.log(dlt);
 
-    fetch(`http://localhost:5000/review/${dlt}`, {
+    fetch(`https://server-two-xi.vercel.app/review/${dlt}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -44,7 +44,7 @@ const Myreviews = () => {
   };
   // updated review start
   const updatedReview = (id) => {
-    fetch(`http://localhost:5000/review/${id}`, {
+    fetch(`https://server-two-xi.vercel.app/review/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

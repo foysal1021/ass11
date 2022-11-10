@@ -1,5 +1,6 @@
 import React from "react";
 import UseTitale from "../../../Utilitis/Utilitis";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 const AddServices = () => {
   UseTitale("Add Services");
@@ -17,7 +18,7 @@ const AddServices = () => {
       price: price,
       details: about,
     };
-    fetch("http://localhost:5000/services", {
+    fetch("https://server-two-xi.vercel.app/services", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +26,12 @@ const AddServices = () => {
       body: JSON.stringify(addSERVICE),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire("Product Added succesful", "success");
+          form.reset();
+        }
+      });
   };
   return (
     <div
@@ -37,6 +43,7 @@ const AddServices = () => {
       }}
     >
       <div className=" container mx-auto">
+        <h1 className=" text-3xl font-bold"> Add Product </h1>
         <form
           onSubmit={addservice}
           className=" grid grid-cols-1 lg:grid-cols-2 gap-10 py-10 px-5"
@@ -65,7 +72,7 @@ const AddServices = () => {
             placeholder="Type Service Description"
           ></textarea>
 
-          <input type="submit" value="Send Request" className=" btn" />
+          <input type="submit" value="Add Product" className=" btn" />
         </form>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../../Asset/img/login.png";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import UseTitale from "../../../Utilitis/Utilitis";
@@ -7,6 +7,7 @@ import UseTitale from "../../../Utilitis/Utilitis";
 const Login = () => {
   UseTitale("Login");
   const { userRegister, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const register = (event) => {
     event.preventDefault();
@@ -21,9 +22,10 @@ const Login = () => {
     // user singup start
     userRegister(email, password)
       .then((result) => {
+        form.reset();
         updateUser(name, photo)
           .then((result) => {
-            alert("ok");
+            navigate("/");
           })
           .catch((err) => console.error(err));
       })
