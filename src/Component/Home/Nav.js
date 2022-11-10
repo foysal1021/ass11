@@ -45,7 +45,7 @@ const Nav = () => {
               </li>
 
               <li>
-                <Link> My reviews</Link>
+                <Link to=""> My reviews</Link>
               </li>
               <li>
                 <Link to="/AddServices">Add service</Link>
@@ -62,7 +62,7 @@ const Nav = () => {
           {user?.uid ? (
             <ul className="menu menu-horizontal p-0">
               <li>
-                <Link> My reviews</Link>
+                <Link to="/my-reviews"> My reviews</Link>
               </li>
 
               <li>
