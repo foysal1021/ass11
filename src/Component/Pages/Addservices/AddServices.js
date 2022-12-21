@@ -1,9 +1,11 @@
 import React from "react";
 import UseTitale from "../../../Utilitis/Utilitis";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import { useNavigate } from "react-router-dom";
 
 const AddServices = () => {
   UseTitale("Add Services");
+  const navigate = useNavigate();
   const addservice = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,7 +20,7 @@ const AddServices = () => {
       price: price,
       details: about,
     };
-    fetch("https://server-two-xi.vercel.app/services", {
+    fetch("https://server-foysal1021.vercel.app/services", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,6 +32,7 @@ const AddServices = () => {
         if (data.acknowledged) {
           Swal.fire("Product Added succesful", "success");
           form.reset();
+          navigate("/all-services");
         }
       });
   };

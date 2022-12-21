@@ -4,7 +4,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import UseTitale from "../../Utilitis/Utilitis";
 
-const Service = ({ service }) => {
+const Service = ({ service, setloading }) => {
   UseTitale("services");
   // console.log(service);
   const { img, title, price, details } = service;
@@ -29,6 +29,7 @@ const Service = ({ service }) => {
           </Link>
         </div>
       </div>
+      {setloading(false)}
     </div>
   );
 };

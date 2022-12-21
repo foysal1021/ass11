@@ -1,5 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 import UseTitale from "../../../Utilitis/Utilitis";
@@ -9,10 +14,8 @@ const ServiceDetails = () => {
   const { user, loading } = useContext(AuthContext);
   const { img, price, title, details, _id } = useLoaderData();
   const [reviews, setReviews] = useState([]);
-  //xxxxxxxxxxxxxxxxxxxx
   const location = useLocation();
-  // <progress className="progress w-56"></progress>
-
+  const navigate = useNavigate();
   const addReview = (event) => {
     event.preventDefault();
 
@@ -30,7 +33,7 @@ const ServiceDetails = () => {
       service_id: _id,
     };
     // review post in database start
-    fetch("https://server-two-xi.vercel.app/review", {
+    fetch("https://server-foysal1021.vercel.app/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,12 +44,13 @@ const ServiceDetails = () => {
       .then((data) => {
         if (data.acknowledged) {
           Swal.fire("Review Added!", "Pls Refresh page", "success");
+          navigate("/my-reviews");
         }
       });
   }; // review post in database end
 
   useEffect(() => {
-    fetch("https://server-two-xi.vercel.app/review")
+    fetch("https://server-foysal1021.vercel.app/review")
       .then((res) => res.json())
       .then((data) => setReviews(data.review));
   }, []);

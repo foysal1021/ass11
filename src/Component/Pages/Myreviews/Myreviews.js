@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 import UseTitale from "../../../Utilitis/Utilitis";
+import { useNavigate } from "react-router-dom";
 
 // ES6 Modules or TypeScript
 
@@ -10,10 +11,10 @@ const Myreviews = () => {
   const { user } = useContext(AuthContext);
   //   console.log("ok", user?.email);
   const [myReviews, setMyreviews] = useState([]);
-  console.log("all reviews", myReviews);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://server-two-xi.vercel.app/review?email=${user?.email}`)
+    fetch(`https://server-foysal1021.vercel.app/review?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyreviews(data.review));
   }, [user?.email]);
@@ -22,7 +23,7 @@ const Myreviews = () => {
   const deleteReview = (dlt) => {
     console.log(dlt);
 
-    fetch(`https://server-two-xi.vercel.app/review/${dlt}`, {
+    fetch(`https://server-foysal1021.vercel.app/review/${dlt}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -44,7 +45,7 @@ const Myreviews = () => {
   };
   // updated review start
   const updatedReview = (id) => {
-    fetch(`https://server-two-xi.vercel.app/review/${id}`, {
+    fetch(`https://server-foysal1021.vercel.app/review/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

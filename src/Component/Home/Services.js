@@ -6,8 +6,10 @@ import Service from "./Service";
 const Services = () => {
   UseTitale("services");
   const [Services, setServices] = useState([]);
+  const [loading, setloading] = useState(true);
+  console.log(loading);
   useEffect(() => {
-    fetch("https://server-two-xi.vercel.app/services3")
+    fetch("https://server-foysal1021.vercel.app/services3")
       .then((res) => res.json())
       .then((data) => setServices(data.services));
   }, []);
@@ -24,10 +26,17 @@ const Services = () => {
       }}
     >
       <h1 className=" text-5xl font-bold"> MY SERVICES </h1>
+      {loading === true && (
+        <progress className="progress w-52 mt-20"></progress>
+      )}
 
       <div className=" lg:flex justify-around">
         {Services.map((service) => (
-          <Service key={service._id} service={service}></Service>
+          <Service
+            key={service._id}
+            service={service}
+            setloading={setloading}
+          ></Service>
         ))}
       </div>
 

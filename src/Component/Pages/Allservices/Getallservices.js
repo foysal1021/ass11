@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import UseTitale from "../../../Utilitis/Utilitis";
-const Getallservices = ({ service }) => {
+const Getallservices = ({ service, setloading }) => {
   UseTitale("All Services");
   const { _id, title, price, img, details } = service;
+  console.log("all service", service);
 
   return (
     <div>
@@ -29,6 +30,7 @@ const Getallservices = ({ service }) => {
             </Link>
           </div>
         </div>
+        {setloading(false)}
       </div>
     </div>
   );
